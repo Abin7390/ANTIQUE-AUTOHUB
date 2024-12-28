@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiqueAuto Hub</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/specimen/Kumbh+Sans -->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">  <!-- https://fontawesome.com/-->  
+    <link rel="stylesheet" href="css/magnific-popup.css">       <!-- https://dimsemenov.com/plugins/magnific-popup/ -->
+    <link rel="stylesheet" href="css/tooplate-vertex.css">
+<!--
+
+Tooplate 2124 Vertex
+
+https://www.tooplate.com/view/2124-vertex
+
+-->
+
+<style>
+    .tm-input-group {
+            margin-bottom: 20px;
+            margin-left: 120px;
+            text-align: left;
+            width: 50%;
+        }
+
+        
+
+        .tm-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+            font-family: 'Kumbh Sans', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .tm-input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+       
+
+        .tm-btn:hover {
+            background-color: #2980b9;
+        }
+</style>
+
+</head>
+<body>
+    <!-- Page Loader -->
+    
+
+    <!-- Site logo -->
+    <h1 class="tm-brand">
+        <i class="fas fa-car fa-2x tm-brand-icon"></i>
+        <center><span class="tm-brand-text">AntiqueAuto Hub
+            <div style="font-size:medium;">Since 1877</div>
+        </span>  </center>
+            
+    </h1>
+
+    <!-- Nav -->
+    <nav class="tm-nav">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul id="tm-main-nav">
+            <li class="nav-item">                                
+                <a href="/index" class="nav-link ">
+                    Introduction
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/index#services" class="nav-link">
+                    Services
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/index#gallery" class="nav-link">
+                    Gallery
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/index#about" class="nav-link">
+                    About
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/index#contact" class="nav-link">
+                    Contact
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link current">
+                    Sign in
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Content -->
+    <main>
+        <div id="intro" class="tm-section">
+            <!-- form left -->
+            <div class="tm-section-col tm-content">
+                <div class="tm-media">
+                    
+                </div>
+    
+                <div class="tm-media">
+                    
+                </div>
+                
+                <div class="form-section">
+                
+                <!-- Error message display -->
+    
+                    
+                        <h2 class="tm-text-primary" style="margin-left: 120px; margin-top: -100px;">Sign In</h2>
+                        <form th:action="@{/login}" th:object="${user}" method="post" class="login_form">
+                            <div class="tm-input-group">
+                                <label for="email" class="tm-input-label">Email</label>
+                                <input type="text" id="email" name="email" placeholder="Enter your email" class="tm-input" required>
+                            </div>
+                            <div class="tm-input-group">
+                                <label for="password" class="tm-input-label">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" class="tm-input" required>
+                            </div>
+                            <button type="submit" class="tm-btn" style="margin-left: 120px;">Login</button>
+                            <div class="tm-mt-20">
+                                <div th:if="${error}" class="error-message" style="color: rgba(255, 170, 0, 0.563); margin-left: 120px;">
+							        <p th:text="${error}"></p>
+							    </div>
+                                <a href="/register" class="tm-link" style="margin-left: 120px; margin-bottom: 100px;">Don't have an account? Sign up here</a>
+                            </div>
+                        </form>
+                  
+                </div>
+                  
+                
+            </div>
+            
+            <!-- form right -->
+            <div class="tm-section-col tm-parallax" data-parallax="scroll" data-image-src="img/vertex-bg-01.jpg"></div>
+        </div> <!-- #form -->
+
+        
+            
+            <!-- Services right -->
+            <div class="tm-section-col tm-parallax" data-parallax="scroll" data-image-src="img/vertex-bg-02.jpg"></div>
+        </div> <!-- #services -->
+
+        
+        <footer class="tm-copyright tm-text-small" style="margin-left: 50px; " >
+            &copy; 2024 AntiqueAuto HUB  
+                    
+                    <!-- - Design: <a rel="nofollow" href="https://www.tooplate.com" class="tm-text-link" target="_parent">Tooplate</a> -->
+                </footer>         
+            
+            
+
+        
+            
+           
+    </main>
+
+    <script src="js/plugins.js"></script>
+    <script>
+        
+         $(function(){
+            
+            /*************** Navigation *****************/
+
+           
+
+            /****************** Smooth Scrolling *****************/
+
+            $(".tm-btn-next").on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        // window.location.hash = hash;
+                    });
+                }
+            });
+
+            $('.tm-brand-icon').on('click', function(event) {
+                $('html, body').animate({
+                        scrollTop: $('#intro').offset().top
+                    }, 800);
+            });
+
+            /****************** Gallery ******************/
+
+           
+            /****************** Magnific Popup ***********/
+
+            $('.tm-gallery').magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>

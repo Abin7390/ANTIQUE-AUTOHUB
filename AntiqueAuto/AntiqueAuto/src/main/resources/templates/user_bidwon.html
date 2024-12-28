@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>AntiqueAuto-Agent</title>
+
+  <!-- slider stylesheet -->
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+   <style>
+    
+  .contactt {
+    display: none; /* Enables vertical scrolling */
+    overflow-y:auto;
+    max-height: 100vh; /* Limits the maximum height to 80% of the viewport height */
+    position: fixed; /* Keeps the div fixed in place */
+    top: 50%; /* Center the div vertically */
+    left: 50%; /* Center the div horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position after centering */
+    width: 50%; /* Adjust width as needed */
+    background-color: white; /* Background color */
+    padding: 20px; /* Padding inside the div */
+    border-radius: 10px; /* Rounded corners */
+    z-index: 1000; /* Make sure it appears on top */
+}
+
+  .overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Behind the popup but above other elements */
+  }
+  .feedbackk{
+    display: none; /* Hide by default */
+    position: fixed; /* Make it a popup */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+    width: 50%; /* Adjust width as needed */
+    background-color: white; /* Background color for the popup */
+    padding: 20px; /* Add some padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow for the popup effect */
+    z-index: 1000; /* Ensure it appears above other elements */
+    border-radius: 8px; /* Rounded corners */
+
+  }
+  .icon-white{
+  	color: white;
+  }
+  .user_option span{
+ 	color:white; 
+  }
+  .cta-button {
+    background: linear-gradient(135deg, #d1b39c, #5b3a29); /* Gradient from light brown to dark brown */
+    color: white;                /* White text */
+    border: none;              /* No border */
+    border-radius: 5px;       /* Rounded corners */
+    padding: 10px 20px;       /* Vertical and horizontal padding */
+    font-size: 16px;           /* Font size */
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition effects */
+}
+
+/* Hover effect */
+.cta-button:hover {
+    background: linear-gradient(135deg, #c59a84, #4e2f1e); /* Slightly darker gradient on hover */
+    transform: scale(1.05);    /* Slightly increase size */
+}
+
+/* Focus effect */
+.cta-button:focus {
+    outline: none;              /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add shadow for focus */
+}
+
+.highlight{
+	font-weight:600;
+}
+  
+</style>
+  
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="/agent_home">
+            <span>
+            	<span>AntiqueAuto Hub</span>
+              <i class="fas fa-car fa-normal icon-white"></i>
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/agent_home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="#do"> Services </a>
+                </li>
+                
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+              </ul>
+              <div class="user_option">
+                <a href="">
+                  <img src="images/user.png" alt="">
+                  <span th:text="${user?.username}"></span>
+                </a>
+                
+                
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      
+<div class="container" style="margin:150px;">
+    <h1>Congratulations, You Won!</h1>
+    <p>Dear <span class="highlight" th:text="${user?.username}"></span>,</p>
+    <p>We are thrilled to inform you that you have won the auction for our exclusive vintage car. Your final bid of <strong class="highlight" th:text="${car.current_bid}"></strong> secured this timeless beauty.</p>
+    
+    <div class="car-info" style="align-items:center; justify-content:center; ">
+        <p>Car Make: <span class="highlight" th:text="${car.car_make}"></span></p>
+        <p>Car Model: <span class="highlight" th:text="${car.car_model}"></span></p>
+        <p>Year of Manufacture: <span class="highlight" th:text="${car.car_year}"></span></p>
+        <p>Condition: <span class="highlight" th:text="${car.car_condition}"></span></p>
+        <p>Description: <span class="highlight" th:text="${car.car_description}"></span></p>
+        <p>Owner's Name: <span class="highlight" th:text="${car.owner_name}"></span></p>
+        <p>Owner's Phone Number: <span class="highlight" th:text="${car.phone_number}"></span></p>
+        <p>Owner's Email: <span class="highlight" th:text="${car.email}"></span></p>
+        
+        <div class="car_photo">
+    <a th:href="@{/upload/{photo}(photo=${#strings.arraySplit(car.car_photos, ',')[0]})}" download>
+<!-- <img th:src="@{/upload/{photo}(photo=${#strings.arraySplit(car.car_photos, ',')[0]})}" alt="Car Photo" style="max-width: 200px; max-height: 200px; cursor: pointer;"/> -->
+<p>Click Here to download the car photo.</p>
+</a>
+</div>
+
+
+
+    </div>
+    
+    <a href="/won_recieve" class="cta-button">Finalize Your Purchase</a><br><br>
+
+    <p>Thank you for participating in the auction! We hope you enjoy your new vintage car.</p>
+</div>
+    </section>
+    <!-- end slider section -->
+  
+
+  <!-- do section -->
+
+  
+
+  <!-- end do section -->
+
+ 
+
+ 
+
+  
+
+  <!-- target section -->
+  <section class="target_section layout_padding2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              10+
+            </h2>
+            <h5>
+              Years of Business
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              1000+
+            </h2>
+            <h5>
+              Cars Delivered
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              1000+
+            </h2>
+            <h5>
+              Satisfied Customers
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="detail-box">
+            <h2>
+              24/7
+            </h2>
+            <h5>
+              Support
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end target section -->
+
+  
+
+  <!-- end contact section -->
+  
+<div class="feedbackk">
+  <section class="contact_section layout_padding">
+    <div class="container">
+
+      <div class="heading_container">
+        <h2>
+          Comment your thoughts
+         
+        </h2>
+      </div>
+      <div class="">
+        <div class="">
+          <div class="row">
+            <div class="col-md-9 mx-auto">
+              <div class="contact-form">
+                <form action="">
+                  <div>
+                    <input type="text" placeholder="Full Name ">
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Phone Number">
+                  </div>
+                  <div>
+                    <input type="email" placeholder="Email Address">
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Message" class="input_message">
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn_on-hover">
+                      Send
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </section>
+</div>
+
+
+
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              About us
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="images/location-white.png" width="18px" alt="">
+              </div>
+              <p>
+                Address
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/telephone-white.png" width="12px" alt="">
+              </div>
+              <p>
+                +01 1234567890
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/envelope-white.png" width="18px" alt="">
+              </div>
+              <p>
+				contact@VintageAutoHUB.com              
+				</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+		      Auction Details
+		    </h5>
+		    <p>
+		      Get insights into our upcoming vintage car auctions, bid registration, and terms of participation. 
+		    </p>
+          </div>
+        </div>
+
+       
+            <div class="social_box">
+              <a href="">
+                <img src="images/fb.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/twitter.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/linkedin.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/youtube.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      
+  </section>
+
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2024  All Rights Reserved By
+      <a href="">AntiqueAuto Hub Ltd</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- owl carousel script 
+    -->
+  <script type="text/javascript">
+  
+//Attach the event listener to the overlay to close the popup
+
+function showRequestCallSection() {
+    // Show the "Request A Call Back" section as a popup
+    document.querySelector('.contactt').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'block';
+    // Optionally, set a max height if needed
+  }
+
+  function hideRequestCallSection() {
+    // Hide the "Request A Call Back" section
+    document.querySelector('.contactt').style.display = 'none';
+    document.querySelector('.overlay').style.display = 'none';
+  }
+
+  document.querySelector('.overlay').addEventListener('click', hideRequestCallSection);
+
+  
+  function showRequestfeedbackSection() {
+    // Show the "Feedback" section as a popup
+    document.querySelector('.feedbackk').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'block';
+  }
+
+  function hideRequestfeedbackSection() {
+    // Hide the "Feedback" section
+    document.querySelector('.feedbackk').style.display = 'none';
+    document.querySelector('.overlay').style.display = 'none';
+  }
+
+  function hideSection() {
+    // Hide the currently visible section
+    if (document.querySelector('.contactt').style.display === 'block') {
+      hideRequestCallSection();
+    } else if (document.querySelector('.feedbackk').style.display === 'block') {
+      hideRequestfeedbackSection();
+    }
+  }
+
+
+
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 0,
+      navText: [],
+      center: true,
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        1000: {
+          items: 3
+        }
+      }
+    });
+  </script>
+  <!-- end owl carousel script -->
+
+</body>
+
+</html>

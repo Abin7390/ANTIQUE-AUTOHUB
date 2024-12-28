@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Approve Cars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM4Z5i6L5g8KZ1cOj8K8GkH7HqRFA1YAfJpT0i" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            position: relative; /* Added for absolute positioning of logout button */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #dc3545;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+        margin-top:40px;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        td {
+            background-color: white;
+            height: 100px;
+            transition: background-color 0.3s;
+        }
+
+        td:hover {
+            background-color: #f1f1f1;
+        }
+
+        .car-photo {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .btnss {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .approve-btn, .reject-btn {
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .approve-btn {
+            background-color: green;
+        }
+
+        .approve-btn:hover {
+            background-color: darkgreen;
+            transform: scale(1.05);
+        }
+
+        .reject-btn {
+            background-color: red;
+        }
+
+        .reject-btn:hover {
+            background-color: darkred;
+            transform: scale(1.05);
+        }
+
+        .filter-btn {
+            background-color: orange;
+            color: black;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<a class="logout-btn" href="/logout">Logout</a>
+
+<h1>Admin - Approve Cars</h1>
+
+<!-- Filter Buttons -->
+<div>
+    <a th:href="@{/admin_approveCar?status=pending}" class="filter-btn">Pending</a>
+    <a th:href="@{/admin_approveCar?status=approved}" class="filter-btn">Approved</a>
+    <a th:href="@{/admin_approveCar?status=rejected}" class="filter-btn">Rejected</a>
+    <a th:href="@{/admin_approveCar}" class="filter-btn">All Cars</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Owner Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Car Number</th>
+            <th>Car Make</th>
+            <th>Car Model</th>
+            <th>Car Year</th>
+            <th>Condition</th>
+            <th>Description</th>
+            <th>Starting Bid</th>
+            <th>RC File</th>
+            <th>Car Photos</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Loop through cars passed from the controller -->
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.owner_name}"></td>
+            <td th:text="${car.phone_number}"></td>
+            <td th:text="${car.email}"></td>
+            <td th:text="${car.carNumber}"></td>
+            <td th:text="${car.car_make}"></td>
+            <td th:text="${car.car_model}"></td>
+            <td th:text="${car.car_year}"></td>
+            <td th:text="${car.car_condition}"></td>
+            <td th:text="${car.car_description}"></td>
+            <td th:text="${car.starting_bid}"></td>
+            <td><a th:href="@{/upload/{rc}(rc=${car.rc})}" target="_blank">View RC</a></td>
+            <td>
+                <div th:each="photo : ${#strings.arraySplit(car.car_photos, ',')}">
+                    <img th:src="@{/upload/{photo}(photo=${photo})}" alt="Car Photo" class="car-photo">
+                </div>
+            </td>
+            <td th:text="${car.status}"></td>
+            <td class="btnss">
+    <a th:if="${car.status != 'Approved' && car.status != 'sold' && car.status != 'Ongoing'}" 
+       th:href="@{/admin/approveCar/{carId}(carId=${car.id})}" class="approve-btn">Approve</a>
+    <a th:if="${car.status != 'Rejected' && car.status != 'sold' && car.status != 'Ongoing'}" 
+       th:href="@{/admin/rejectCar/{carId}(carId=${car.id})}" class="reject-btn">Reject</a>
+</td>
+
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

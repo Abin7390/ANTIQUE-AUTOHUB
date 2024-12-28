@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Registration Type - VintageAuto Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet"> <!-- Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome -->
+    <link rel="stylesheet" href="css/magnific-popup.css"> <!-- Optional CSS -->
+    <link rel="stylesheet" href="css/tooplate-vertex.css"> <!-- Optional CSS -->
+    <style>
+        body {
+            font-family: 'Kumbh Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
+            display: flex;
+            height: 100vh;
+        }
+        .left-side, .right-side {
+            width: 50%;
+            height: 100vh;
+            position: relative;
+        }
+        .left-side {
+            background-color: #333;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .right-side {
+            background: url('img/vertex-bg-01.jpg') no-repeat center center/cover;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 20px;
+        }
+        .option {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .option:hover {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+        .option i {
+            font-size: 80px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .option p {
+            font-size: 20px;
+            color: #333;
+        }
+        .tm-brand{
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Site logo -->
+<h1 class="tm-brand">
+    <i class="fas fa-car fa-2x tm-brand-icon"></i>
+    <center><span class="tm-brand-text">AntiqueAuto Hub
+        <div style="font-size:medium;">Since 1877</div>
+    </span>  </center>
+        
+</h1>
+
+
+    <div class="left-side">
+        <nav class="tm-nav">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="tm-main-nav">
+                <li class="nav-item">
+                    <a href="/index#intro" class="nav-link">
+                        Introduction
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/index#services" class="nav-link">
+                        Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/index#gallery" class="nav-link">
+                        Gallery
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/index#about" class="nav-link">
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/index#contact" class="nav-link">
+                        Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link current">
+                        Sign in
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <h2>Which kind of registration would you like to do?</h2>
+            <div class="options">
+                <div class="option" onclick="window.location.href='/register_user';">
+                    <i class="fas fa-user"></i>
+                    <p>Buyer</p>
+                </div>
+                <div class="option" onclick="window.location.href='/register_seller';">
+                    <i class="fas fa-briefcase"></i>
+                    <p>Agent</p>
+                </div>
+            </div><br><br><br>
+        
+            <footer class="tm-copyright tm-text-small" style="margin-left: 50px; " >
+                &copy; 2024 AntiqueAuto HUB  
+                        
+                        <!-- - Design: <a rel="nofollow" href="https://www.tooplate.com" class="tm-text-link" target="_parent">Tooplate</a> -->
+                    </footer>         
+                
+        </div>
+    </div>
+    <div class="right-side"></div>
+
+    
+</body>
+</html>

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>AntiqueAuto-Agent</title>
+
+  <!-- slider stylesheet -->
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+   <style>
+   
+    
+  .contactt {
+    display: none; /* Enables vertical scrolling */
+    overflow-y:auto;
+    max-height: 100vh; /* Limits the maximum height to 80% of the viewport height */
+    position: fixed; /* Keeps the div fixed in place */
+    top: 50%; /* Center the div vertically */
+    left: 50%; /* Center the div horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position after centering */
+    width: 50%; /* Adjust width as needed */
+    background-color: white; /* Background color */
+    padding: 20px; /* Padding inside the div */
+    border-radius: 10px; /* Rounded corners */
+    z-index: 1000; /* Make sure it appears on top */
+}
+
+  .overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 999; /* Behind the popup but above other elements */
+  }
+  .feedbackk{
+    display: none; /* Hide by default */
+    position: fixed; /* Make it a popup */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+    width: 50%; /* Adjust width as needed */
+    background-color: white; /* Background color for the popup */
+    padding: 20px; /* Add some padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow for the popup effect */
+    z-index: 1000; /* Ensure it appears above other elements */
+    border-radius: 8px; /* Rounded corners */
+
+  }
+  .icon-white{
+  	color: white;
+  }
+  .user_option span{
+ 	color:white; 
+  }
+  
+        h1 {
+        margin-top:150px;
+            text-align: center;
+        }
+        .add-car-btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .car-container {
+        background-color:#00000070;
+        
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .car-card {
+            background-color: #00000059;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+        .car-card:hover {
+            transform: scale(1.05);
+        }
+        .car-photo-container {
+            height: 200px;
+            overflow: hidden;
+        }
+        .car-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .car-info {
+            padding: 15px;
+            text-align: left;
+        }
+        .car-info h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #c8b5b5;
+        }
+        .car-info p {
+            margin: 8px 0;
+            color: #c8b5b5;
+            font-size: 14px;
+        }
+        .car-info .status {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #c8b5b5;
+        }
+        .car-info a {
+            display: inline-block;
+            margin: 10px 5px 0 0;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .car-info a.delete-btn {
+            background-color: #dc3545;
+        }
+        @media (max-width: 1024px) {
+            .car-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .car-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .popup-form {
+            background-color: #38d8f100;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+        }
+        .subb-btn {
+    background: linear-gradient(135deg, #d1b39c, #5b3a29); /* Gradient from light brown to dark brown */
+    color: black;
+    text-decoration: none;
+    padding: 12px 18px; /* Slightly larger padding for emphasis */
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px 20px 0;
+    cursor: pointer;
+    font-weight: 200; /* Make the text bold */
+    transition: background-color 0.3s, transform 0.3s;
+        }
+        .subb-btn:hover{
+        background: linear-gradient(135deg, #c59a84, #4e2f1e); /* Slightly darker gradient on hover */
+    transform: scale(1.05);   
+        }
+        .open-form-btn:hover {
+            background-color: #45a049;
+        }
+        .close-btn {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .close-btn:hover {
+            background-color: #e41e1e;
+        }
+        .filter-btn{
+    background: linear-gradient(135deg, #d1b39c, #5b3a29); /* Gradient from light brown to dark brown */
+            color: black;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-btn:hover {
+background: linear-gradient(135deg, #c59a84, #4e2f1e); /* Slightly darker gradient on hover */
+    transform: scale(1.05);        }
+    .continue-auction-btn {
+    background-color: #28a745; /* Bright green background */
+    color: white;
+    padding: 8px 12px; /* Smaller padding for a small button */
+    border: none;
+    border-radius: 4px; /* Slightly smaller border radius for a compact look */
+    font-size: 14px; /* Font size suitable for a small button */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.continue-auction-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+        
+</style>
+  
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="/agent_home">
+            <span>
+            	<span>AntiqueAuto Hub</span>
+              <i class="fas fa-car fa-normal icon-white"></i>
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/agent_home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                
+             
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+              </ul>
+              <div class="user_option">
+                <a href="">
+                  <img src="images/user.png" alt="">
+                  <span th:text="${user?.username}"></span>
+                </a>
+                
+                
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+	<div class="container">
+	
+	 <h1 style="margin-top:-10px;">User - My Cars</h1>
+
+
+<!-- Flash messages section (for success/error alerts) -->
+<div class="container mt-3">
+  <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+    <span th:text="${success}"></span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <span th:text="${error}"></span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<div>
+    <button class="subb-btn" onclick="showRequestCallSection();" style="margin-left:43%;margin-top:20px;">Add New Car</button>
+                                      
+    
+</div>
+<div style="margin-left: 380px; margin-top: 50px;">
+    <a th:href="@{/agent_listCars?status=ongoing}" class="filter-btn">OnGoing</a>
+    <a th:href="@{/agent_listCars?status=approved}" class="filter-btn">Approved</a>
+    <a th:href="@{/agent_listCars?status=sold}" class="filter-btn">Sold</a>
+    <a th:href="@{/agent_listCars}" class="filter-btn">All</a>
+    <br><br><br>
+</div></div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- do section -->
+
+  
+
+  <!-- end do section -->
+
+ 
+
+ 
+
+  
+
+  <!-- target section -->
+  <section class="target_section layout_padding2">
+    <div class="container">
+     
+        <div class="car-container">
+    <div class="car-card" th:each="car : ${userCars}">
+        <div class="car-photo-container">
+            <img th:src="@{'/upload/' + ${#strings.arraySplit(car.car_photos, ',')[0]}}" alt="Car Photo">
+        </div>
+        <div class="car-info">
+            <h2 th:text="${car.car_make} + ' ' + ${car.car_model}"></h2>
+            <p><strong>Year:</strong> <span th:text="${car.car_year}"></span></p>
+            <p><strong>Condition:</strong> <span th:text="${car.car_condition}"></span></p>
+            <p><strong>Starting Bid:</strong> Rs. <span th:text="${car.starting_bid}"></span></p>
+            <p class="status" th:text="${car.status}"></p>
+            <div style="display:flex;">
+            <a th:href="@{/upload/{rc}(rc=${car.rc})}" target="_blank">View RC</a>
+            <div th:if="${car.status == 'Approved'}">
+            <a th:href="@{/user/deleteCar/{carId}(carId=${car.id})}" class="delete-btn">Delete</a>
+            </div></div>
+            <!-- Conditional Display -->
+            <div class="popup-form">
+                <div th:if="${car.status == 'ongoing'}">
+                    <p><strong>Current Bid:</strong> RS. <span th:text="${car.current_bid}"></span></p>
+                    <p><strong>Auction End Time:</strong> <span th:text="${car.auctionEndTime}"></span></p>
+                    <form th:action="@{/endauction}" method="post">
+                    <input type="number" name="car_id" th:value="${car.id}" hidden>
+				    <input type="number" name="from_id" th:value="${car.fromid}"hidden>
+				    <input type="number" name="to_id" th:value="${car.to_id}"hidden>
+				    <div th:if="${car.fromid == car.to_id}">
+					    	 <p>No bid has been registered yet!</p>
+					        <button type="submit" class="continue-auction-btn">Stop Auction</button>
+					    
+					</div>
+					
+					<!-- Else condition: show a different message or button -->
+					<div th:if="${car.fromid != car.to_id}">
+					    <p>This car is still open for bidding!</p>
+					    <button type="submit" class="continue-auction-btn">Stop Auction and Sell</button>
+					</div></form>
+                </div>
+                 <!-- Stop Auction Button -->
+        
+                <div th:if="${car.status == 'Approved'}">
+                    <form th:action="@{/addToAuction}" method="post">
+                        <input type="text" name="carId" th:value="${car.id}" hidden>                   	
+                        <div>
+                            <label for="endDate-${car.id}">Auction End Date:</label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                        <div>
+                            <label for="endTime-${car.id}">Auction End Time:</label>
+                            <input type="time" id="endTime" name="endTime" required>
+                        </div><br>
+                        <div>
+                            <button type="submit" class="subb-btn">Start Auction Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+      </div>
+  </section>
+
+  <!-- end target section -->
+
+  <div class="overlay" onclick="hideSection()"></div> <!-- Overlay to hide the visible section -->
+
+  <!-- contact section -->
+<div class="contactt">
+  <section class="contact_section layout_padding">
+    <div class="container">
+
+      <div class="heading_container">
+        <h2>
+          Add Your Car 
+        </h2>
+      </div>
+      <div class="">
+        <div class="">
+          <div class="row">
+            <div class="col-md-9 mx-auto">
+              <div class="contact-form">
+ 				<form th:action="@{/addcar}" th:object="${car}" method="post" enctype="multipart/form-data">				  
+ 				<div>
+				    <input type="text" id="owner_name" name="owner_name" placeholder="Owner's Full Name" required>
+				  </div>
+				  <div>
+				    <input type="text" id="phone_number" name="phone_number" placeholder="Owner's Phone Number" required>
+				  </div>
+				  <div>
+				    <input type="email" id="email" name="email" placeholder="Owner's Email Address" required>
+				  </div>
+				  <div>
+				    <input type="text" id="carNumber" name="carNumber" placeholder="Registered Number of Car (eg:KL12A1234)" required>
+				  </div>
+				  <div>
+				    <input type="text" id="car_make" name="car_make" placeholder="Car Make (e.g., Ford, Chevrolet)" required>
+				  </div>
+				  <div>
+				    <input type="text" id="car_model" name="car_model" placeholder="Car Model (e.g., Mustang, Camaro)" required>
+				  </div>
+				  <div>
+				    <input type="number" id="car_year" name="car_year" placeholder="Year of Manufacture" min="100" max="2024" required>
+				  </div>
+				  <div>
+				    <input type="text" id="car_condition" name="car_condition" placeholder="Condition (e.g., Excellent, Good, Fair)" required>
+				  </div>
+				  <div>
+				    <textarea id="car_description" name="car_description" placeholder="Car Description" class="input_message" rows="4" required></textarea>
+				  </div>
+				  <div>
+				    <input type="number" id="starting_bid" name="starting_bid" placeholder="Starting Bid Price" required>
+				  </div>
+				  <div>
+				    <label for="rc">Upload Image of Vehicle RC:</label>
+				    <input type="file" id="rc" name="rc" accept="image/*" multiple required>
+				  </div>
+				  <div>
+				    <label for="car_photos">Upload Car Photos:</label>
+				    <input type="file" id="car_photos" name="car_photos" accept="image/*" multiple required>
+				  </div>
+				  
+				  <input type="text" name="status" id ="status" value="pending"  hidden>
+				  <input type="text" name="fromid" id ="fromid" th:value="${user?.id}"  hidden>
+				  <div class="d-flex justify-content-center">
+				    <button type="submit" class="btn_on-hover">
+				      Submit Details x	
+				    </button>
+				  </div>
+				</form>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </section>
+</div>
+
+  <!-- end contact section -->
+  
+<div class="feedbackk">
+  <section class="contact_section layout_padding">
+    <div class="container">
+
+      <div class="heading_container">
+        <h2>
+          Comment your thoughts
+         
+        </h2>
+      </div>
+      <div class="">
+        <div class="">
+          <div class="row">
+            <div class="col-md-9 mx-auto">
+              <div class="contact-form">
+                <form action="">
+                  <div>
+                    <input type="text" placeholder="Full Name ">
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Phone Number">
+                  </div>
+                  <div>
+                    <input type="email" placeholder="Email Address">
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Message" class="input_message">
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn_on-hover">
+                      Send
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </section>
+</div>
+
+
+
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              About us
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="images/location-white.png" width="18px" alt="">
+              </div>
+              <p>
+                Address
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/telephone-white.png" width="12px" alt="">
+              </div>
+              <p>
+                +01 1234567890
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="images/envelope-white.png" width="18px" alt="">
+              </div>
+              <p>
+				contact@VintageAutoHUB.com              
+				</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+		      Auction Details
+		    </h5>
+		    <p>
+		      Get insights into our upcoming vintage car auctions, bid registration, and terms of participation. 
+		    </p>
+          </div>
+        </div>
+
+       
+            <div class="social_box">
+              <a href="">
+                <img src="images/fb.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/twitter.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/linkedin.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/youtube.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      
+  </section>
+
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2024  All Rights Reserved By
+      <a href="">AntiqueAuto Hub Ltd</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- owl carousel script 
+    -->
+  <script type="text/javascript">
+  
+//Attach the event listener to the overlay to close the popup
+
+function showRequestCallSection() {
+    // Show the "Request A Call Back" section as a popup
+    document.querySelector('.contactt').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'block';
+    // Optionally, set a max height if needed
+  }
+
+  function hideRequestCallSection() {
+    // Hide the "Request A Call Back" section
+    document.querySelector('.contactt').style.display = 'none';
+    document.querySelector('.overlay').style.display = 'none';
+  }
+
+  document.querySelector('.overlay').addEventListener('click', hideRequestCallSection);
+
+  
+  function showRequestfeedbackSection() {
+    // Show the "Feedback" section as a popup
+    document.querySelector('.feedbackk').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'block';
+  }
+
+  function hideRequestfeedbackSection() {
+    // Hide the "Feedback" section
+    document.querySelector('.feedbackk').style.display = 'none';
+    document.querySelector('.overlay').style.display = 'none';
+  }
+
+  function hideSection() {
+    // Hide the currently visible section
+    if (document.querySelector('.contactt').style.display === 'block') {
+      hideRequestCallSection();
+    } else if (document.querySelector('.feedbackk').style.display === 'block') {
+      hideRequestfeedbackSection();
+    }
+  }
+
+
+
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 0,
+      navText: [],
+      center: true,
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        1000: {
+          items: 3
+        }
+      }
+    });
+  </script>
+  <!-- end owl carousel script -->
+
+</body>
+
+</html>
